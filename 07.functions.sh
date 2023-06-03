@@ -11,7 +11,6 @@ sample(){
 #calling sample function
 
 sample
-status
 
 #declare status function
 
