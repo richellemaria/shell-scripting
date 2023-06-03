@@ -2,4 +2,4 @@
 This is the repository to learn and automate shell scripting 
 
 
-each and every repo will have readme file
+Each and every repository will have readme file which tells about the repository
