@@ -15,3 +15,5 @@ c=30
 echo $a
 echo The value of variable b is $b
 echo The value of variable c is ${c}
+
+echo "The value of variable d is ${d}"
