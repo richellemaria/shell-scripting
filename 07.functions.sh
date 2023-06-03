@@ -5,7 +5,7 @@
 sample(){
 
     echo "I am sample function with name sample"
-    echo "I am executing sample function
+    echo "I am executing sample function"
 }
 
 #calling sample function
@@ -21,5 +21,4 @@ status(){
 }
 
 #calling status function
-
 status
