@@ -14,4 +14,5 @@ echo line 3
 # /n :new line
 # /t :new tab
 
-echo line 1\nline 2
+echo -e "line 1\nline 2"
+echo -e "line 1\n\tline 2"
