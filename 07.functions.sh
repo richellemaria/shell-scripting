@@ -17,7 +17,7 @@ sample
 status(){
     no_user=$(who | wc -l)
     echo "Today's date is $(date +%F)"
-    echo  -e "Number of user running \e[32m $no_user \e[0m"
+    echo  -e "Number of user running \e[43m $no_user \e[0m"
 }
 
 #calling status function
