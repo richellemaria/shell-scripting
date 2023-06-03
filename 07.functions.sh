@@ -16,7 +16,7 @@ sample
 
 status(){
     echo "Today's date is $(date +%F)"
-    echo "Number of process running $(who | wc -l)"
+    echo "Number of process running \e[34m $(who | wc -l) \e[0m"
 }
 
 #calling status function
