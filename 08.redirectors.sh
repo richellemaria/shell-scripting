@@ -2,4 +2,4 @@
 
 ls -ltr > output.txt
 uptime >> output.txt
-ls -ltrdadgg &> output.txt
+ls -ltrdadgg 2> output.txt
