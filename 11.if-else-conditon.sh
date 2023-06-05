@@ -7,11 +7,11 @@ if[$action ==start];then
 elfi[$action==stop];then
     echo -e "\e[32m stopping server \e[0m"
     exit 1
-elfi[@action==restart];then
+elfi[$action==restart];then
     echo -e "\e[31m restarting server \e[0m"
     exit 2
 else 
-    echo("file executed $0")
+    echo "file executed $0"
     exit 3
 
 fi
