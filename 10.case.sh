@@ -3,13 +3,16 @@
 Action=$1
 case $Action in
     start)
-        echo "starting server"
+        echo -e "\e[34m starting server \e[0m"
+        exit 0
         ;;
     stop)
-        echo "stopping server"
+        echo -e "\e[32m stopping server \e[0m"
+        exit 1
         ;;
     *)
-        echo " you can either start or stop"
+        echo -e "\e[31m you can either start or stop \e[0m"
+        exit 2
         ;;
 
 esac
