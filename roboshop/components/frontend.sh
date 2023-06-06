@@ -9,7 +9,7 @@ if [ $ID -ne 0 ]; then
 fi
 
 stat(){
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
   echo -e "\e[32m success \e[0m"
 else 
   echo -e "\e[31m failure \e[0m"
@@ -31,8 +31,8 @@ stat $?
 
 echo -n "Extracting the ${COMPONENT} component"
 unzip /tmp/${COMPONENT}.zip &>> ${LOGFILE}
-mv ${COMPONENT}-main/* . &>> ${LOGFILE}
-mv static/* . &>> ${LOGFILE}
+mv ${COMPONENT}-main/* . 
+mv static/* . 
 rm -rf ${COMPONENT}-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf 
 stat $1
