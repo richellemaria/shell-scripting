@@ -1,6 +1,7 @@
 #!/bin/bash
 
 COMPONENT=frontend
+LOGFILE=/tmp/${COMPONENT}.log
 ID=$(id -u)
 if [ $ID -ne 0 ]; then
    echo -e "\e[31m This should be run as root or sudo previlige \e[0m"
@@ -16,7 +17,7 @@ fi
 }
 
 echo -n "installing nginx"
-yum install nginx -y &>> "/tmp/${COMPONENT}.log"
+yum install nginx -y &>> /${LOGFILE}
 stat $?
 
 echo -n "downloading the ${COMPONENT} component"
@@ -25,6 +26,13 @@ stat $?
 
 echo -n "performing cleanup"
 cd /usr/share/nginx/html
-rm -rf * &>> "/tmp/${COMPONENT}.log"
-
+rm -rf * &>> ${LOGFILE}
 stat $?
+
+echo -n "Extracting the ${COMPONENT} component"
+unzip /tmp/${COMPONENT}.zip
+mv ${COMPONENT}-main/* . &>> ${LOGFILE}
+mv static/* . &>> ${LOGFILE}
+rm -rf ${COMPONENT}-main README.md
+mv localhost.conf /etc/nginx/default.d/roboshop.conf
+
