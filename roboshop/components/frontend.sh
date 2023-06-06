@@ -35,4 +35,4 @@ mv ${COMPONENT}-main/* .
 mv static/* . 
 rm -rf ${COMPONENT}-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf 
-stat $1
+stat $?
