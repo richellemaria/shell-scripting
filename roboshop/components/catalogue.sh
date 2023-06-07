@@ -27,9 +27,8 @@ echo -n "installing nodejs"
 yum install nodejs -y &>> $LOGFILE
 stat $?
 
-
 id $Appuser
-if [ $? -ne 0 ];then
+if [ $? -ne 0 ]; then
    echo -n "creating service account"
    useradd $Appuser
    stat $?
