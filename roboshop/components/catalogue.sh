@@ -30,6 +30,6 @@ stat $?
 id $Appuser
 if [ $? -ne 0 ] ; then
    echo -n "creating service account"
-   useradd $Appuser
+   useradd $Appuser &>> $LOGFILE
    stat $?
 fi
