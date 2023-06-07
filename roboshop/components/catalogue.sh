@@ -42,5 +42,8 @@ echo -n "copying the $COMPONENT to $Appuser home directory"
 cd /home/$Appuser
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat $?
-#mv $COMPONENT-main catalogue
+
+echo -n "modifying the ownership"
+mv $COMPONENT-main $COMPONENT
+chown -R $Appuser:$Appuser /home/$Appuser/$COMPONENT
 #cd /home/$Appuser/catalogue
