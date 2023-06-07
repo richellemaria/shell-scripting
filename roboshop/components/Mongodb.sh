@@ -22,4 +22,4 @@ stat $?
 
 echo -n "installing $COMPONENT"
 yum install -y mongodb-org &>> $LOGFILE
-$?
+stat $?
