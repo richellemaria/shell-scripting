@@ -2,6 +2,8 @@
 
 COMPONENT=catalogue
 LOGFILE=/tmp/${COMPONENT}.log
+Appuser=roboshop
+
 ID=$(id -u)
 if [ $ID -ne 0 ]; then
    echo -e "\e[31m This should be run as root or sudo previlige \e[0m"
@@ -25,7 +27,10 @@ echo -n "installing nodejs"
 yum install nodejs -y &>> $LOGFILE
 stat $?
 
-echo -n "creating service account"
-useradd roboshop
-stat $?
 
+id $Appuser
+if [ $? -ne 0 ];then
+   echo -n "creating service account"
+   useradd $Appuser
+   stat $?
+fi
