@@ -33,3 +33,14 @@ if [ $? -ne 0 ] ; then
    useradd $Appuser &>> $LOGFILE
    stat $?
 fi
+
+echo -n "downloding the $COMPONENT component"
+curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
+stat $?
+
+echo -n "copying the $COMPONENT to $Appuser home directory"
+cd /home/$Appuser
+unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
+stat $?
+#mv $COMPONENT-main catalogue
+#cd /home/$Appuser/catalogue
