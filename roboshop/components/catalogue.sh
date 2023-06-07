@@ -20,3 +20,12 @@ fi
 echo -n "configuring the repo"
 curl curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash - &>> $LOGFILE
 stat $?
+
+echo -n "installing nodejs"
+yum install nodejs -y &>> $LOGFILE
+stat $?
+
+echo -n "creating service account"
+useradd roboshop
+stat $?
+
