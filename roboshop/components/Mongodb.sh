@@ -26,7 +26,7 @@ stat $?
 
 echo -n "enabling database visibility"
 sed -i -e 's/127.0..0.1/0.0.0.0/' /etc/mongod.conf
-stat $1
+echo 'stat $?'
 
 echo -n "starting $COMPONENT"
 systemctl enable mongod  &>> $LOGFILE
