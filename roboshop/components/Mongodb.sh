@@ -13,6 +13,7 @@ if [ $1 -eq 0 ]; then
   echo -e "\e[32m success \e[0m"
 else 
   echo -e "\e[31m failure \e[0m"
+  exit 2
 fi
 }
 
@@ -26,9 +27,10 @@ stat $?
 
 echo -n "enabling database visibility"
 sed -i -e 's/127.0..0.1/0.0.0.0/' /etc/mongod.conf
-echo 'stat $?'
+stat $?
 
 echo -n "starting $COMPONENT"
+systemctl deamon-reload mongod  &>> $LOGFILE
 systemctl enable mongod  &>> $LOGFILE
-systemctl start mongod   &>> $LOGFILE
+systemctl restart mongod   &>> $LOGFILE
 stat $?
