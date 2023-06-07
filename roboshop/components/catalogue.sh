@@ -46,4 +46,4 @@ stat $?
 echo -n "modifying the ownership"
 mv $COMPONENT-main $COMPONENT
 chown -R $Appuser:$Appuser /home/$Appuser/$COMPONENT
-#cd /home/$Appuser/catalogue
+stat $?
