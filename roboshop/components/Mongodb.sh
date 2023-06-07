@@ -21,5 +21,5 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans
 stat $?
 
 echo -n "installing $COMPONENT"
-yum install -y mongodb-org
+yum install -y mongodb-org &>> $LOGFILE
 $?
