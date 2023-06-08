@@ -47,3 +47,10 @@ echo -n "modifying the ownership"
 mv $COMPONENT-main $COMPONENT
 chown -R $Appuser:$Appuser /home/$Appuser/$COMPONENT
 stat $?
+
+echo -n "generating npm $COMPONENT artifact"
+cd /home/$Appuser/$COMPONENT
+npm install &>> $LOGFILE
+stat $?
+
+
