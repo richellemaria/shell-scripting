@@ -40,7 +40,7 @@ stat $?
 
 echo -n "copying the $COMPONENT to $Appuser home directory"
 cd /home/$Appuser
-rm -f $COMPONENT &>> $LOGFILE
+rm -rf $COMPONENT &>> $LOGFILE
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat $?
 
