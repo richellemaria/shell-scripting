@@ -45,7 +45,7 @@ unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat $?
 
 echo -n "modifying the ownership"
-mv $COMPONENT-main $COMPONENT
+mv $COMPONENT-main/ $COMPONENT
 chown -R $Appuser:$Appuser /home/$Appuser/$COMPONENT
 stat $?
 
