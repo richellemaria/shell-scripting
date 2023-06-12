@@ -13,9 +13,10 @@
 #aws ec2 describe-security-groups --filters Name=group-name,Values=b54-allow-all | jq '.SecurityGroups[].GroupId' | sed -e 's/"//g'
 
 COMPONENT=$1
+ENV=$2
 HostedZoneID="Z00601192FWSDGPTTWP2N"
 
-if [ -z  $COMPONENT ] ; then
+if [ -z  $COMPONENT ] || [ -z $ENV ]  ; then
    echo -e "\e[34m pass the component name /e[0m"
    echo -e "\e[32m pass sh create-server.sh compenentName \e[0m"
    exit 1
@@ -28,15 +29,15 @@ SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-al
 create_ec2(){
     echo -e "AMI ID is to launch ec2 instance \e[34m $AMI_ID\e[0m"
     echo -e "security group to launch ec2 instance \e[31m $SG_ID\e[0m"
-    IP_ADD=$(aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --security-group-ids ${SG_ID} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+    IP_ADD=$(aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --security-group-ids ${SG_ID} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT-$ENV}]" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
     echo -e "Private IP address to launch ec2 instance \e[34m $IP_ADD \e[0m"
 
-    echo " launching is $COMPONENT is completed"
+    echo " launching $COMPONENT-$ENV server is completed"
 
     echo -e "creating dns record $COMPONENT"
-    sed -e "s/COMPONENT/${COMPONENT}/"  -e "s/IPADD/${IP_ADD}/" route53.json  >  /tmp/roboshop.json
-    aws route53 change-resource-record-sets --hosted-zone-id ${HostedZoneID} --change-batch file:///tmp/roboshop.json  | jq . | >  /tmp/roboshop.json
+    sed -e "s/COMPONENT/${COMPONENT}-${ENV}/"  -e "s/IPADD/${IP_ADD}/" route53.json  >  /tmp/roboshop.json
+    aws route53 change-resource-record-sets --hosted-zone-id ${HostedZoneID} --change-batch file:///tmp/roboshop.json
 
     echo -e "\e[36m **** Creating DNS Record for the $COMPONENT has completed **** \e[0m \n\n"
 }
