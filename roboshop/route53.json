@@ -2,7 +2,7 @@
     "Comment": "Update record to add new A record",
     "Changes": [
         {
-            "Action": "CREATE",
+            "Action": "UPSERT",
             "ResourceRecordSet": {
                 "Name": "COMPONENT.roboshop.internal",
                 "Type": "A",
