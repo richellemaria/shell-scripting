@@ -18,6 +18,6 @@ SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-al
 
 echo -e "AMI ID is to launch ec2 instance \e[34m $AMI_ID\e[0m"
 echo -e "security group to launch ec2 instance \e[31m $SG_ID\e[0m"
-IP_ADD=$(aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --security-group-ids ${SG_ID} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq '.Instances[].PrivateIpAddress' | sed -e '/s/"//g')
+IP_ADD=$(aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --security-group-ids ${SG_ID} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq '.Instances[].PrivateIpAddress')
 
 echo -e "Private IP address to launch ec2 instance \e[34m $IP_ADD \e[0m"
