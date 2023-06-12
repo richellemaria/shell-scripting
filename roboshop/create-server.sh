@@ -17,8 +17,8 @@ ENV=$2
 HostedZoneID="Z00601192FWSDGPTTWP2N"
 
 if [ -z  $COMPONENT ] || [ -z $ENV ]  ; then
-   echo -e "\e[34m pass the component name /e[0m"
-   echo -e "\e[32m pass sh create-server.sh compenentName \e[0m"
+   echo -e "\e[34m pass the component name \e[0m"
+   echo -e "\e[32m pass sh create-server.sh compenentName and environment \e[0m"
    exit 1
 
 fi
