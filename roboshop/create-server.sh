@@ -2,7 +2,7 @@
 
 #aws ec2 run-instances --image-id ami-0abcdef1234567890 --instance-type t2.micro --key-name MyKeyPair
 
-#aws ec2 run-instances --image-id ami-0abcdef1234567890 --instance-type t2.micro
+#aws ec2 run-instances --image-id ami-0abcdef1234567890 --instance-type t2.micro --tag-specifications 'ResourceType=instance,Tags=[{Key=webserver,Value=production}]' 'ResourceType=volume,Tags=[{Key=cost-center,Value=cc123}]'
 
 #aws ec2 describe-images  --owners amazon --filters "Name=platform,Values=windows" "Name=root-device-type,Values=ebs"
 
@@ -17,4 +17,4 @@ SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-al
 
 echo -e "AMI ID is to launch ec2 instance \e[34m $AMI_ID\e[0m"
 echo -e "security group to launch ec2 instance \e[31m $SG_ID\e[0m"
-aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro |jq .
+aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro 'ResourceType=instance,Tags=[{Key=name,Value=payment}]' |jq .
