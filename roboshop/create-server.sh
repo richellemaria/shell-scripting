@@ -34,5 +34,7 @@ echo -e "Private IP address to launch ec2 instance \e[34m $IP_ADD \e[0m"
 echo " launching is $COMPONENT is completed"
 
 echo -e "creating dns record $COMPONENT"
-sed -e "/s/COMPONENT/${COMPONENT}/"  -e "/s/IPADD/${IP_ADD}/" route53.json  >  /tmp/roboshop.json
+sed -e "s/COMPONENT/${COMPONENT}/"  -e "s/IPADD/${IP_ADD}/" route53.json  >  /tmp/roboshop.json
 aws route53 change-resource-record-sets --hosted-zone-id ${HostedZoneID} --change-batch file:///tmp/roboshop.json
+
+ echo -e "\e[36m **** Creating DNS Record for the $COMPONENT has completed **** \e[0m \n\n"
