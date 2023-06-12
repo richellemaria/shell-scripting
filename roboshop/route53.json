@@ -1,0 +1,18 @@
+{
+    "Comment": "Update record to add new A record",
+    "Changes": [
+        {
+            "Action": "CREATE",
+            "ResourceRecordSet": {
+                "Name": "COMPONENT.roboshop.internal",
+                "Type": "A",
+                "TTL": 10,
+                "ResourceRecords": [
+                    {
+                        "Value": "IPADD"
+                    }
+                ]
+            }
+        }
+    ]
+}
