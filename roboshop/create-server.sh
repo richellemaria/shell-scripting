@@ -15,7 +15,7 @@
 COMPONENT=$1
 if [-z $COMPONENT]; then
    echo -e "\e[34m pass the component name /e[0m"
-   echo -e "\e[32m pass sh create-server.sh compenentName \e[0m'
+   echo -e "\e[32m pass sh create-server.sh compenentName \e[0m"
    exit 1
 
 fi
