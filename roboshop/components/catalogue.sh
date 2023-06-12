@@ -38,7 +38,7 @@ echo -n "downloding the $COMPONENT component"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
 stat $?
 
-echo -n "copying the $COMPONENT to $Appuser home directory"
+echo -e "copying the $COMPONENT to $Appuser home directory"
 cd /home/$Appuser
 rm -rf $COMPONENT &>> $LOGFILE
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
