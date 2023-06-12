@@ -13,6 +13,13 @@
 #aws ec2 describe-security-groups --filters Name=group-name,Values=b54-allow-all | jq '.SecurityGroups[].GroupId' | sed -e 's/"//g'
 
 COMPONENT=$1
+if [-z $COMPONENT]; then
+   echo -e "\e[34m pass the component name /e[0m"
+   echo -e "\e[32m pass sh create-server.sh compenentName \e[0m'
+   exit 1
+
+fi
+
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
 SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-allow-all | jq '.SecurityGroups[].GroupId' | sed -e 's/"//g')
 
