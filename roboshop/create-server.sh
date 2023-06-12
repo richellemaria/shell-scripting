@@ -36,7 +36,7 @@ create_ec2(){
 
     echo -e "creating dns record $COMPONENT"
     sed -e "s/COMPONENT/${COMPONENT}/"  -e "s/IPADD/${IP_ADD}/" route53.json  >  /tmp/roboshop.json
-    aws route53 change-resource-record-sets --hosted-zone-id ${HostedZoneID} --change-batch file:///tmp/roboshop.json >  /tmp/roboshop.json
+    aws route53 change-resource-record-sets --hosted-zone-id ${HostedZoneID} --change-batch file:///tmp/roboshop.json  | jq .
 
     echo -e "\e[36m **** Creating DNS Record for the $COMPONENT has completed **** \e[0m \n\n"
 }
